@@ -11,11 +11,11 @@ document.addEventListener('DOMContentLoaded', function (event){
 
     cardStock.addEventListener("click", function(event){
         
-        
-        ticketsAdapter.postTicket(parseInt(event.target.id)).then(renderMovieCards)
-        
-            
-        
+        if (event.target.id){
+            if (event.target.innerText !== "Sold Out"){
+                ticketsAdapter.postTicket(parseInt(event.target.id)).then(renderMovieCards)
+            }
+        }        
     })
 
 
