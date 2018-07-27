@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function (event){
                             <div id = "${element.id}"class="${classType}">${status}</div>
                         </div>
                         </div>`
-        })
+        }).join("")
         cardStock.innerHTML = cardsHTML
     }
   
