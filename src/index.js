@@ -11,9 +11,11 @@ document.addEventListener('DOMContentLoaded', function (event){
 
     cardStock.addEventListener("click", function(event){
         
-        if (event.target.id){
-            ticketsAdapter.postTicket(parseInt(event.target.id)).then(renderMovieCards)
-        }
+        
+        ticketsAdapter.postTicket(parseInt(event.target.id)).then(renderMovieCards)
+        
+            
+        
     })
 
 
@@ -25,7 +27,22 @@ document.addEventListener('DOMContentLoaded', function (event){
     }
     
     function createCardsHTML(array){
+        let blueClass = "ui blue button"
+        let label = "ui label"
+        let buyTicket = "Buy Ticket"
+        let soldOut = "Sold Out"
+        let status;
+        let classType;
+        
         let cardsHTML = array.map(function(element){
+            if ((element.capacity - element.tickets_sold)>0){
+                status = buyTicket
+                classType = blueClass
+            }else{
+                status = soldOut
+                classType = label
+            }
+
             return `<div class="card">
                         <div class="content">
                             <div class="header">
@@ -42,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function (event){
                             </div>
                         </div>
                         <div class="extra content">
-                            <div id = "${element.id}"class="ui blue button">Buy Ticket</div>
+                            <div id = "${element.id}"class="${classType}">${status}</div>
                         </div>
                         </div>`
         })
