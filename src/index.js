@@ -5,6 +5,18 @@ document.addEventListener('DOMContentLoaded', function (event){
     //variable definitions
 
     let cardStock = document.getElementById('ui-cards-showings')
+    
+
+    //event listeners
+
+    cardStock.addEventListener("click", function(event){
+        
+        if (event.target.id){
+            ticketsAdapter.postTicket(parseInt(event.target.id)).then(renderMovieCards)
+        }
+    })
+
+
 
     // functional logic    
 
@@ -26,11 +38,11 @@ document.addEventListener('DOMContentLoaded', function (event){
                             <span class="ui label">
                                 ${element.showtime}
                             </span>
-                            ${element.capacity - element.tickets_sold}remaining tickets
+                            ${element.capacity - element.tickets_sold} remaining tickets
                             </div>
                         </div>
                         <div class="extra content">
-                            <div class="ui blue button">Buy Ticket</div>
+                            <div id = "${element.id}"class="ui blue button">Buy Ticket</div>
                         </div>
                         </div>`
         })
@@ -38,6 +50,13 @@ document.addEventListener('DOMContentLoaded', function (event){
     }
   
     
+
+
+
+
+
+
+
     renderMovieCards()
 
 
