@@ -38,6 +38,7 @@ function generateAdapter(apiLink){
 
             // something is wrong with this fetch post request - it 'Failed to execute 'fetch' on 'Window': parameter 2 ('init') is not an object.' It's executing fetch on the wrong object? Why is it trying 'Window' and not the apiLink? - what is 'this' in this context?
             // Is there something wrong with my config?
+            //i solved this, it was an issue with my JSON.stringify
         }
 
 
